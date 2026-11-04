@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=a9d9bbfc-f039-4681-958b-3a474577a28e
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 Remédios Naturais — L. Galdino</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FFFFFF; --bg-soft:#F6F3EA; --text:#0F1111; --muted:#565959; --line:#DDD8CA;
+  --link:#2F6B4F; --price:#B12704; --green:#3B5E2B; --green-dark:#2B4720;
+  --btn:#F5B841; --btn-hover:#EAA92C; --btn-border:#D9A13B; --ok:#007600; --top:#2A3B1F;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',Arial,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+
+/* TOP BAR */
+.topbar{background:var(--top);color:#fff}
+.topbar .in{max-width:1300px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:16px}
+.brand{font-weight:700;font-size:18px;letter-spacing:.3px;color:#fff}
+.brand small{display:block;font-weight:400;font-size:11px;opacity:.75;letter-spacing:1px}
+.topbar .search{flex:1;display:flex;max-width:640px}
+.topbar .search div{flex:1;background:#fff;color:#666;border-radius:6px 0 0 6px;padding:9px 12px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .search span{background:var(--btn);border-radius:0 6px 6px 0;padding:0 14px;display:flex;align-items:center;color:#222}
+.topbar .promo{font-size:12px;text-align:right;line-height:1.3}
+.topbar .promo b{display:block;font-size:14px}
+.subbar{background:#38502A;color:#fff;font-size:13px}
+.subbar .in{max-width:1300px;margin:0 auto;padding:7px 20px;display:flex;gap:22px;overflow-x:auto;white-space:nowrap}
+.subbar a{color:#fff}
+.crumbs{max-width:1300px;margin:0 auto;padding:12px 20px;font-size:12px;color:var(--muted)}
+
+/* MAIN PRODUCT */
+.product{max-width:1300px;margin:0 auto;padding:0 20px 30px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.1fr) 290px;gap:32px;align-items:start}
+.gallery{display:flex;gap:12px;position:sticky;top:16px}
+.thumbs{display:flex;flex-direction:column;gap:8px}
+.thumbs button{width:52px;height:64px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff;cursor:pointer;padding:0}
+.thumbs button.on{border:2px solid var(--btn-border);box-shadow:0 0 0 2px rgba(245,184,65,.35)}
+.thumbs img{width:100%;height:100%;object-fit:cover;object-position:top}
+.stage{flex:1;background:var(--bg-soft);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:18px;min-height:480px}
+.stage img{max-height:560px;width:auto;box-shadow:6px 8px 24px rgba(0,0,0,.18);border-radius:2px}
+
+.info h1{font-size:24px;line-height:1.3;font-weight:500;margin-bottom:6px}
+.byline{font-size:14px;margin-bottom:6px}
+.byline a{font-weight:500}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 12px}
+.badge{background:var(--green);color:#fff;font-size:12px;font-weight:600;padding:3px 9px;border-radius:3px}
+.badge.alt{background:#FDF1D8;color:#7A4B00;border:1px solid #F0D49A}
+hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+.price-line{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.off{color:#CC0C39;font-size:26px;font-weight:300}
+.big-price{font-size:28px;font-weight:500;line-height:1}
+.big-price sup{font-size:13px;position:relative;top:-11px}
+.list-price{font-size:13px;color:var(--muted);margin-top:4px}
+.list-price s{color:var(--muted)}
+.formats{display:flex;gap:10px;margin:14px 0}
+.fmt{border:2px solid var(--btn-border);background:#FFFBF2;border-radius:8px;padding:8px 14px;font-size:13px}
+.fmt b{display:block;font-size:14px}
+.about h2{font-size:16px;font-weight:700;margin-bottom:8px}
+.about ul{padding-left:18px}
+.about li{margin-bottom:7px;font-size:14px}
+
+.buybox{border:1px solid var(--line);border-radius:10px;padding:18px;position:sticky;top:16px}
+.buybox .bp{font-size:28px;font-weight:500;line-height:1}
+.buybox .bp sup{font-size:13px;position:relative;top:-11px}
+.buybox .was{font-size:13px;color:var(--muted);margin:6px 0 12px}
+.buybox p{font-size:14px;margin-bottom:8px}
+.instock{color:var(--ok);font-size:18px;font-weight:500;margin:10px 0}
+.btn{display:block;width:100%;text-align:center;border-radius:999px;padding:12px 10px;font-size:15px;font-weight:600;color:var(--text);border:1px solid var(--btn-border);background:var(--btn);margin-bottom:10px;cursor:pointer;animation:pulse 2.4s ease-in-out infinite}
+.btn:hover{background:var(--btn-hover);text-decoration:none;animation:none}
+.btn.green{background:var(--green);border-color:var(--green-dark);color:#fff;animation:none}
+.btn.green:hover{background:var(--green-dark)}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+.secure{font-size:12px;color:var(--muted);display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin-top:8px}
+.secure b{color:var(--text);font-weight:500}
+.guar{margin-top:14px;background:var(--bg-soft);border-radius:8px;padding:10px 12px;font-size:13px}
+
+/* SECTIONS */
+.sec{max-width:1300px;margin:0 auto;padding:28px 20px;border-top:1px solid var(--line)}
+.sec h2{font-size:21px;font-weight:700;margin-bottom:6px}
+.sec .lead{color:var(--muted);margin-bottom:18px;max-width:760px}
+
+/* SLIDER */
+.slider{position:relative;max-width:900px;margin:0 auto;background:var(--bg-soft);border-radius:10px;padding:24px 56px 16px}
+.track-wrap{overflow:hidden}
+.track{display:flex;transition:transform .6s ease}
+.slide{min-width:100%;display:flex;justify-content:center}
+.slide img{max-height:620px;width:auto;border:1px solid var(--line);box-shadow:0 6px 22px rgba(0,0,0,.12);background:#fff}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:64px;border:1px solid var(--line);background:#fff;border-radius:6px;font-size:22px;cursor:pointer;color:#333}
+.nav:hover{background:#f0f0f0}
+.prev{left:8px}.next{right:8px}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.dots button{width:9px;height:9px;border-radius:50%;border:0;background:#C8C8C8;cursor:pointer;padding:0}
+.dots button.on{background:var(--green)}
+.slide-cap{text-align:center;font-size:13px;color:var(--muted);margin-top:8px}
+
+/* FICHA DE EXEMPLO */
+.ficha{max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px;box-shadow:0 6px 22px rgba(0,0,0,.08)}
+.ficha small{color:var(--green);font-weight:600;letter-spacing:.5px;font-size:12px}
+.ficha h3{font-size:20px;margin:4px 0 10px}
+.ficha h4{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:14px 0 4px}
+.ficha ul,.ficha ol{padding-left:18px;font-size:14px}
+.ficha li{margin-bottom:3px}
+.ficha .aviso{margin-top:14px;background:#FDF1D8;border:1px solid #F0D49A;border-radius:6px;padding:8px 10px;font-size:12.5px;color:#6b4300}
+
+/* CHAPTERS */
+.chap{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.chap div{border:1px solid var(--line);border-radius:8px;padding:14px}
+.chap b{display:block;font-size:15px}
+.chap small{display:block;color:var(--green);font-weight:600;font-size:12px;margin:2px 0 6px;letter-spacing:.3px}
+.chap p{font-size:13.5px;color:var(--muted)}
+
+/* BUNDLE */
+.bundle{border:1px solid var(--line);border-radius:10px;overflow:hidden;max-width:760px}
+.brow{display:flex;justify-content:space-between;gap:16px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14px}
+.brow span:last-child{white-space:nowrap;color:var(--muted)}
+.brow b{display:block}
+.brow small{color:var(--muted)}
+.btotal{background:var(--bg-soft);font-weight:600}
+.btotal s{color:var(--muted);font-weight:400}
+.bfinal{background:#F1F6EC;font-size:17px;font-weight:700}
+.bfinal span:last-child{color:var(--price)!important;font-size:20px}
+
+/* AUTHOR */
+.author{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;max-width:960px}
+.author img{width:200px;height:200px;object-fit:cover;object-position:top;border-radius:50%}
+.author h3{font-size:19px;margin-bottom:2px}
+.author .f{color:var(--green);font-weight:600;font-size:14px;margin-bottom:10px}
+
+/* DETAILS */
+.details{max-width:640px;font-size:14px}
+.details div{display:grid;grid-template-columns:200px 1fr;padding:6px 0}
+.details b{font-weight:600}
+
+/* WHO / FAQ */
+.who{max-width:760px;padding-left:18px}
+.who li{margin-bottom:8px}
+details.q{border-bottom:1px solid var(--line);padding:12px 0;max-width:760px}
+details.q summary{cursor:pointer;font-weight:600}
+details.q p{margin-top:8px;color:var(--muted);font-size:14px}
+
+.notice{max-width:760px;background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:13.5px;color:#3a3a3a}
+
+.final{text-align:center}
+.final .btn{max-width:360px;margin:14px auto 6px}
+.footer{background:var(--top);color:#d6dccd;text-align:center;font-size:12px;padding:26px 20px;margin-top:20px}
+.footer i{display:block;font-size:15px;color:#fff;margin-bottom:6px}
+.footer p{max-width:720px;margin:10px auto 0;opacity:.8}
+
+/* MOBILE BUY BAR */
+.mbar{display:none}
+
+@media (max-width:1050px){
+  .product{grid-template-columns:1fr 1fr}
+  .buybox{grid-column:1 / -1;position:static}
+}
+@media (max-width:720px){
+  .topbar .search,.topbar .promo{display:none}
+  .product{grid-template-columns:1fr;gap:18px;padding:0 16px 20px}
+  .gallery{position:static;flex-direction:column-reverse}
+  .thumbs{flex-direction:row;overflow-x:auto}
+  .stage{min-height:0;padding:14px}
+  .stage img{max-height:420px}
+  .info h1{font-size:20px}
+  .sec{padding:24px 16px}
+  .slider{padding:14px 8px 12px}
+  .nav{display:none}
+  .slide img{max-height:none;width:100%}
+  .author{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .details div{grid-template-columns:130px 1fr}
+  .crumbs{padding:10px 16px}
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 16px;gap:12px;align-items:center;z-index:50;box-shadow:0 -4px 14px rgba(0,0,0,.08)}
+  .mbar .p{font-size:20px;font-weight:600;line-height:1.1}
+  .mbar .p small{display:block;font-size:11px;color:var(--muted);font-weight:400}
+  .mbar .btn{margin:0;flex:1;animation:none}
+  body{padding-bottom:76px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="in">
+    <div class="brand">100 Remédios Naturais<small>L. GALDINO</small></div>
+    <div class="search"><div>Livros › Saúde e bem-estar › Plantas e ervas medicinais</div><span>🔍</span></div>
+    <div class="promo">Preço de lançamento<b>Por tempo limitado</b></div>
+  </div>
+</header>
+<nav class="subbar"><div class="in">
+  <a href="#produto">Livro</a><a href="#por-dentro">Por dentro</a><a href="#capitulos">Capítulos</a><a href="#bonus">O que tem no livro</a><a href="#autor">Sobre o autor</a><a href="#detalhes">Detalhes</a><a href="#duvidas">Dúvidas</a>
+</div></nav>
+<div class="crumbs">Livros › Saúde e bem-estar › Plantas e ervas › <b>100 Remédios Naturais</b></div>
+
+<!-- PRODUTO -->
+<main class="product" id="produto">
+  <div class="gallery">
+    <div class="thumbs" id="thumbs">
+      <button type="button" class="on"><img src="images/capa_livro.jpg" alt="Capa do livro"></button>
+      <button type="button"><img src="images/avatar.jpg" alt="L. Galdino segurando o livro"></button>
+    </div>
+    <div class="stage"><img id="mainimg" src="images/capa_livro.jpg" alt="100 Remédios Naturais — capa"></div>
+  </div>
+
+  <div class="info">
+    <h1>100 Remédios Naturais que as Farmácias Escondem de Você: o guia de ervas, raízes e preparos tradicionais direto da horta</h1>
+    <div class="byline">Edição em Português · por <a href="#autor">L. Galdino</a> (Autor)</div>
+    <div class="badges">
+      <span class="badge">Lançamento 2026</span>
+      <span class="badge alt">Livro digital · acesso imediato</span>
+    </div>
+    <hr>
+    <div class="price-line">
+      <span class="off">-71%</span>
+      <span class="big-price"><sup>R$</sup>37<sup>00</sup></span>
+    </div>
+    <div class="list-price">De <s>R$127,00</s> por R$37,00 · Preço de lançamento</div>
+
+    <div class="formats">
+      <div class="fmt"><b>Livro digital (PDF)</b>R$37,00</div>
+    </div>
+    <hr>
+    <div class="about">
+      <h2>Sobre este item</h2>
+      <ul>
+        <li><b>100 preparos tradicionais reunidos em um só guia:</b> chás, xaropes caseiros, compressas, banhos e pastas feitos com ervas, raízes e frutos.</li>
+        <li><b>Ingredientes simples.</b> Plantas de horta, quintal, feira e mercado, sem nada caro ou difícil de achar.</li>
+        <li><b>Passo a passo claro:</b> ingredientes, quantidades, modo de preparo, como guardar e cuidados de uso em cada ficha.</li>
+        <li><b>Conhecimento tradicional organizado:</b> o que se usa há gerações, explicado de um jeito fácil de aplicar na sua rotina.</li>
+        <li><b>Acesso imediato</b> no celular, tablet ou computador. Se quiser, dá pra imprimir e encadernar.</li>
+        <li><b>Conteúdo informativo.</b> Não substitui consulta, diagnóstico ou tratamento médico.</li>
+      </ul>
+    </div>
+  </div>
+
+  <aside class="buybox">
+    <div class="bp"><sup>R$</sup>37<sup>00</sup></div>
+    <div class="was">De <s>R$127,00</s> · você economiza R$90,00</div>
+    <p>📩 <b>Entrega imediata</b> no seu e-mail, logo após o pagamento.</p>
+    <div class="instock">Disponível</div>
+    <a class="btn" href="https://pay.cakto.com.br/p5fcj6a_1062795">Comprar agora</a>
+    <a class="btn green" href="#por-dentro">Ver por dentro</a>
+    <div class="secure">
+      <span>Pagamento</span><b>Pix ou cartão</b>
+      <span>Plataforma</span><b>Cakto · compra segura</b>
+      <span>Formato</span><b>PDF · seu pra sempre</b>
+    </div>
+    <div class="guar">🛡️ <b>Garantia de 7 dias.</b> Não gostou? Peça o reembolso pela plataforma. Sem pergunta.</div>
+  </aside>
+</main>
+
+<!-- POR DENTRO -->
+<section class="sec" id="por-dentro">
+  <h2>Por dentro do livro</h2>
+  <p class="lead">Cada remédio tem uma ficha com ingredientes, modo de preparo, conservação e cuidados. Veja um exemplo do formato:</p>
+  <div class="ficha">
+    <small>FICHA DE EXEMPLO · CAPÍTULO CHÁS</small>
+    <h3>Chá de gengibre com limão</h3>
+    <h4>Ingredientes</h4>
+    <ul>
+      <li>3 cm de gengibre fresco em rodelas</li>
+      <li>1 xícara (240 ml) de água</li>
+      <li>Suco de ½ limão</li>
+    </ul>
+    <h4>Modo de preparo</h4>
+    <ol>
+      <li>Ferva a água com o gengibre por 5 minutos.</li>
+      <li>Desligue, tampe e deixe descansar por 5 minutos.</li>
+      <li>Coe, acrescente o limão e sirva morno.</li>
+    </ol>
+    <h4>Como guardar</h4>
+    <ul><li>Consuma na hora. Se sobrar, guarde na geladeira por até 24 horas.</li></ul>
+    <div class="aviso">Cuidados: pessoas gestantes, em uso de medicamentos ou com condição de saúde devem consultar um profissional antes de usar qualquer preparo.</div>
+  </div>
+</section>
+
+<!-- CAPÍTULOS -->
+<section class="sec" id="capitulos">
+  <h2>Sumário do livro</h2>
+  <p class="lead">Os 100 preparos organizados por tipo, para você achar rápido o que procura.</p>
+  <div class="chap">
+    <div><b>Chás e infusões</b><small>PREPAROS PARA O DIA A DIA</small><p>Gengibre, camomila, erva-cidreira, hortelã, boldo, alecrim e outras ervas de uso tradicional.</p></div>
+    <div><b>Xaropes e méis caseiros</b><small>PREPAROS DOCES E CONSERVÁVEIS</small><p>Combinações com mel, limão, própolis e ervas, com tempo de preparo e validade.</p></div>
+    <div><b>Raízes e cascas</b><small>DECOCTOS E MACERADOS</small><p>Cúrcuma, gengibre e outras raízes: como lavar, cortar, preparar e armazenar.</p></div>
+    <div><b>Compressas, banhos e pastas</b><small>USO EXTERNO</small><p>Preparos com ervas frescas e secas, com orientações de higiene e cuidados.</p></div>
+    <div><b>Sementes, castanhas e frutos</b><small>INGREDIENTES DA NATUREZA</small><p>Castanha-do-pará, sementes e frutos: como incluir na rotina e como conservar.</p></div>
+    <div><b>Horta em casa</b><small>PLANTE O QUE VOCÊ USA</small><p>Quais ervas cultivar em vaso ou quintal, como colher, secar e guardar.</p></div>
+    <div><b>Cuidados e boas práticas</b><small>LEIA ANTES DE USAR</small><p>Contraindicações gerais, interações, quando procurar um profissional de saúde.</p></div>
+  </div>
+</section>
+
+<!-- BÔNUS -->
+<section class="sec" id="bonus">
+  <h2>O que tem no livro por R$37,00</h2>
+  <p class="lead">Tudo num arquivo só, pronto pra usar.</p>
+  <div class="bundle">
+    <div class="brow"><span><b>100 preparos tradicionais</b><small>Com ingredientes, passo a passo, conservação e cuidados</small></span><span>R$47</span></div>
+    <div class="brow"><span><b>Guia da horta em casa</b><small>Quais ervas plantar, colher, secar e guardar</small></span><span>R$19</span></div>
+    <div class="brow"><span><b>Lista de compras por capítulo</b><small>Leve só o que vai usar</small></span><span>R$14</span></div>
+    <div class="brow"><span><b>Guia de cuidados e boas práticas</b><small>O que observar antes de usar cada preparo</small></span><span>R$19</span></div>
+    <div class="brow"><span><b>Atualizações futuras</b><small>Você recebe o livro atualizado, sem custo adicional</small></span><span>R$28</span></div>
+    <div class="brow btotal"><span>Valor total</span><span><s>R$127</s></span></div>
+    <div class="brow bfinal"><span>Você paga hoje</span><span>R$37,00</span></div>
+  </div>
+</section>
+
+<!-- AUTOR -->
+<section class="sec" id="autor">
+  <h2>Sobre o autor</h2>
+  <div class="author">
+    <img src="images/avatar.jpg" alt="L. Galdino">
+    <div>
+      <h3>L. Galdino</h3>
+      <div class="f">Autor de 100 Remédios Naturais</div>
+      <p>Neste livro, L. Galdino reuniu preparos tradicionais com ervas, raízes e frutos e organizou tudo em fichas simples, com ingredientes acessíveis e passo a passo para quem está começando. A proposta é aproximar você do conhecimento das plantas, com clareza e responsabilidade.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DETALHES -->
+<section class="sec" id="detalhes">
+  <h2>Detalhes do produto</h2>
+  <div class="details">
+    <div><b>Autor</b><span>L. Galdino</span></div>
+    <div><b>Edição</b><span>Primeira edição · 2026</span></div>
+    <div><b>Formato</b><span>Livro digital (PDF)</span></div>
+    <div><b>Preparos</b><span>100, organizados por tipo</span></div>
+    <div><b>Idioma</b><span>Português</span></div>
+    <div><b>Entrega</b><span>Imediata, por e-mail</span></div>
+    <div><b>Garantia</b><span>7 dias</span></div>
+  </div>
+</section>
+
+<!-- PRA QUEM -->
+<section class="sec">
+  <h2>Esse livro é pra você se…</h2>
+  <ul class="who">
+    <li>Quer aprender a usar ervas, raízes e frutos de forma simples no dia a dia.</li>
+    <li>Gosta de cozinha e de preparos caseiros e quer ter um guia confiável por perto.</li>
+    <li>Quer montar uma pequena horta em casa e saber o que fazer com ela.</li>
+    <li>Prefere receitas com ingredientes fáceis de achar.</li>
+    <li>Valoriza o conhecimento tradicional e quer tudo organizado em um só lugar.</li>
+  </ul>
+</section>
+
+<!-- AVISO -->
+<section class="sec">
+  <h2>Aviso importante</h2>
+  <div class="notice">Este livro tem caráter informativo e reúne preparos de uso tradicional. Ele não substitui consulta, diagnóstico, tratamento ou medicamentos prescritos por profissional de saúde, e não promete cura ou resultado para nenhuma condição. Antes de usar qualquer preparo, principalmente se você estiver grávida, amamentando, em uso de medicamentos ou com alguma condição de saúde, converse com seu médico ou farmacêutico.</div>
+</section>
+
+<!-- DÚVIDAS -->
+<section class="sec" id="duvidas">
+  <h2>Perguntas frequentes</h2>
+  <details class="q"><summary>Como recebo o livro?</summary><p>Logo após o pagamento, chega no seu e-mail o acesso ao livro em PDF.</p></details>
+  <details class="q"><summary>Consigo ler no celular?</summary><p>Sim. Abre no celular, tablet ou computador. Também dá pra imprimir e encadernar.</p></details>
+  <details class="q"><summary>É livro físico?</summary><p>Não. É um livro digital em PDF, sem frete e sem espera.</p></details>
+  <details class="q"><summary>Isso substitui o médico ou os remédios da farmácia?</summary><p>Não. O livro é informativo e não substitui orientação, diagnóstico ou tratamento de profissionais de saúde. Nunca interrompa um tratamento por conta própria.</p></details>
+  <details class="q"><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. É só pedir o reembolso pela plataforma de pagamento.</p></details>
+</section>
+
+<!-- CTA FINAL -->
+<section class="sec final">
+  <h2>100 Remédios Naturais</h2>
+  <p class="lead" style="margin:0 auto">De <s>R$127</s> por <b style="color:var(--price);font-size:20px">R$37,00</b> · preço de lançamento</p>
+  <a class="btn" href="https://pay.cakto.com.br/p5fcj6a_1062795">Comprar agora</a>
+  <div style="font-size:12px;color:var(--muted)">Acesso imediato · PDF · Garantia de 7 dias</div>
+</section>
+
+<footer class="footer">
+  <i>"O conhecimento das plantas começa na horta."</i>
+  L. Galdino · 2026
+  <p>Conteúdo informativo. Não substitui orientação médica. Os resultados variam de pessoa para pessoa e nenhum preparo deste livro promete cura ou tratamento de doenças.</p>
+</footer>
+
+<div class="mbar">
+  <div class="p">R$37,00<small>de <s>R$127</s></small></div>
+  <a class="btn" href="https://pay.cakto.com.br/p5fcj6a_1062795">Comprar agora</a>
+</div>
+
+<script>
+// galeria
+var main=document.getElementById('mainimg');
+document.querySelectorAll('#thumbs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('#thumbs button').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');
+    var t=b.querySelector('img');
+    main.src=t.currentSrc||t.src;
+  });
+});
+</script>
+
+
+</body></html>
